@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.design.Dao.Part1nMapper" >
+  <resultMap id="BaseResultMap" type="com.example.design.bean.Part1n" >
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="WCW101MV_AVALUE" property="wcw101mvAvalue" jdbcType="VARCHAR" />
+    <result column="WCW103MV_AVALUE" property="wcw103mvAvalue" jdbcType="VARCHAR" />
+    <result column="WCW105MV_AVALUE" property="wcw105mvAvalue" jdbcType="VARCHAR" />
+    <result column="WCW111MT_AVALUE" property="wcw111mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCWF121MT_AVALUE" property="wcwf121mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW131MT_AVALUE" property="wcw131mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW113MT_AVALUE" property="wcw113mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW123MT_AVALUE" property="wcw123mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW133MT_AVALUE" property="wcw133mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW101MT_AVALUE" property="wcw101mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW103MT_AVALUE" property="wcw103mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW105MT_AVALUE" property="wcw105mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW107MT_AVALUE" property="wcw107mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW141MT_AVALUE" property="wcw141mtAvalue" jdbcType="VARCHAR" />
+    <result column="WCW143MT_AVALUE" property="wcw143mtAvalue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    date, WCW101MV_AVALUE, WCW103MV_AVALUE, WCW105MV_AVALUE, WCW111MT_AVALUE, WCWF121MT_AVALUE, 
+    WCW131MT_AVALUE, WCW113MT_AVALUE, WCW123MT_AVALUE, WCW133MT_AVALUE, WCW101MT_AVALUE, 
+    WCW103MT_AVALUE, WCW105MT_AVALUE, WCW107MT_AVALUE, WCW141MT_AVALUE, WCW143MT_AVALUE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.design.bean.Part1nExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from part1n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.example.design.bean.Part1nExample" >
+    delete from part1n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.design.bean.Part1n" >
+    insert into part1n (date, WCW101MV_AVALUE, WCW103MV_AVALUE, 
+      WCW105MV_AVALUE, WCW111MT_AVALUE, WCWF121MT_AVALUE, 
+      WCW131MT_AVALUE, WCW113MT_AVALUE, WCW123MT_AVALUE, 
+      WCW133MT_AVALUE, WCW101MT_AVALUE, WCW103MT_AVALUE, 
+      WCW105MT_AVALUE, WCW107MT_AVALUE, WCW141MT_AVALUE, 
+      WCW143MT_AVALUE)
+    values (#{date,jdbcType=VARCHAR}, #{wcw101mvAvalue,jdbcType=VARCHAR}, #{wcw103mvAvalue,jdbcType=VARCHAR}, 
+      #{wcw105mvAvalue,jdbcType=VARCHAR}, #{wcw111mtAvalue,jdbcType=VARCHAR}, #{wcwf121mtAvalue,jdbcType=VARCHAR}, 
+      #{wcw131mtAvalue,jdbcType=VARCHAR}, #{wcw113mtAvalue,jdbcType=VARCHAR}, #{wcw123mtAvalue,jdbcType=VARCHAR}, 
+      #{wcw133mtAvalue,jdbcType=VARCHAR}, #{wcw101mtAvalue,jdbcType=VARCHAR}, #{wcw103mtAvalue,jdbcType=VARCHAR}, 
+      #{wcw105mtAvalue,jdbcType=VARCHAR}, #{wcw107mtAvalue,jdbcType=VARCHAR}, #{wcw141mtAvalue,jdbcType=VARCHAR}, 
+      #{wcw143mtAvalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.design.bean.Part1n" >
+    insert into part1n
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="wcw101mvAvalue != null" >
+        WCW101MV_AVALUE,
+      </if>
+      <if test="wcw103mvAvalue != null" >
+        WCW103MV_AVALUE,
+      </if>
+      <if test="wcw105mvAvalue != null" >
+        WCW105MV_AVALUE,
+      </if>
+      <if test="wcw111mtAvalue != null" >
+        WCW111MT_AVALUE,
+      </if>
+      <if test="wcwf121mtAvalue != null" >
+        WCWF121MT_AVALUE,
+      </if>
+      <if test="wcw131mtAvalue != null" >
+        WCW131MT_AVALUE,
+      </if>
+      <if test="wcw113mtAvalue != null" >
+        WCW113MT_AVALUE,
+      </if>
+      <if test="wcw123mtAvalue != null" >
+        WCW123MT_AVALUE,
+      </if>
+      <if test="wcw133mtAvalue != null" >
+        WCW133MT_AVALUE,
+      </if>
+      <if test="wcw101mtAvalue != null" >
+        WCW101MT_AVALUE,
+      </if>
+      <if test="wcw103mtAvalue != null" >
+        WCW103MT_AVALUE,
+      </if>
+      <if test="wcw105mtAvalue != null" >
+        WCW105MT_AVALUE,
+      </if>
+      <if test="wcw107mtAvalue != null" >
+        WCW107MT_AVALUE,
+      </if>
+      <if test="wcw141mtAvalue != null" >
+        WCW141MT_AVALUE,
+      </if>
+      <if test="wcw143mtAvalue != null" >
+        WCW143MT_AVALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw101mvAvalue != null" >
+        #{wcw101mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw103mvAvalue != null" >
+        #{wcw103mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw105mvAvalue != null" >
+        #{wcw105mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw111mtAvalue != null" >
+        #{wcw111mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcwf121mtAvalue != null" >
+        #{wcwf121mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw131mtAvalue != null" >
+        #{wcw131mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw113mtAvalue != null" >
+        #{wcw113mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw123mtAvalue != null" >
+        #{wcw123mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw133mtAvalue != null" >
+        #{wcw133mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw101mtAvalue != null" >
+        #{wcw101mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw103mtAvalue != null" >
+        #{wcw103mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw105mtAvalue != null" >
+        #{wcw105mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw107mtAvalue != null" >
+        #{wcw107mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw141mtAvalue != null" >
+        #{wcw141mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="wcw143mtAvalue != null" >
+        #{wcw143mtAvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.design.bean.Part1nExample" resultType="java.lang.Integer" >
+    select count(*) from part1n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update part1n
+    <set >
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw101mvAvalue != null" >
+        WCW101MV_AVALUE = #{record.wcw101mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw103mvAvalue != null" >
+        WCW103MV_AVALUE = #{record.wcw103mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw105mvAvalue != null" >
+        WCW105MV_AVALUE = #{record.wcw105mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw111mtAvalue != null" >
+        WCW111MT_AVALUE = #{record.wcw111mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcwf121mtAvalue != null" >
+        WCWF121MT_AVALUE = #{record.wcwf121mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw131mtAvalue != null" >
+        WCW131MT_AVALUE = #{record.wcw131mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw113mtAvalue != null" >
+        WCW113MT_AVALUE = #{record.wcw113mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw123mtAvalue != null" >
+        WCW123MT_AVALUE = #{record.wcw123mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw133mtAvalue != null" >
+        WCW133MT_AVALUE = #{record.wcw133mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw101mtAvalue != null" >
+        WCW101MT_AVALUE = #{record.wcw101mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw103mtAvalue != null" >
+        WCW103MT_AVALUE = #{record.wcw103mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw105mtAvalue != null" >
+        WCW105MT_AVALUE = #{record.wcw105mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw107mtAvalue != null" >
+        WCW107MT_AVALUE = #{record.wcw107mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw141mtAvalue != null" >
+        WCW141MT_AVALUE = #{record.wcw141mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcw143mtAvalue != null" >
+        WCW143MT_AVALUE = #{record.wcw143mtAvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update part1n
+    set date = #{record.date,jdbcType=VARCHAR},
+      WCW101MV_AVALUE = #{record.wcw101mvAvalue,jdbcType=VARCHAR},
+      WCW103MV_AVALUE = #{record.wcw103mvAvalue,jdbcType=VARCHAR},
+      WCW105MV_AVALUE = #{record.wcw105mvAvalue,jdbcType=VARCHAR},
+      WCW111MT_AVALUE = #{record.wcw111mtAvalue,jdbcType=VARCHAR},
+      WCWF121MT_AVALUE = #{record.wcwf121mtAvalue,jdbcType=VARCHAR},
+      WCW131MT_AVALUE = #{record.wcw131mtAvalue,jdbcType=VARCHAR},
+      WCW113MT_AVALUE = #{record.wcw113mtAvalue,jdbcType=VARCHAR},
+      WCW123MT_AVALUE = #{record.wcw123mtAvalue,jdbcType=VARCHAR},
+      WCW133MT_AVALUE = #{record.wcw133mtAvalue,jdbcType=VARCHAR},
+      WCW101MT_AVALUE = #{record.wcw101mtAvalue,jdbcType=VARCHAR},
+      WCW103MT_AVALUE = #{record.wcw103mtAvalue,jdbcType=VARCHAR},
+      WCW105MT_AVALUE = #{record.wcw105mtAvalue,jdbcType=VARCHAR},
+      WCW107MT_AVALUE = #{record.wcw107mtAvalue,jdbcType=VARCHAR},
+      WCW141MT_AVALUE = #{record.wcw141mtAvalue,jdbcType=VARCHAR},
+      WCW143MT_AVALUE = #{record.wcw143mtAvalue,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

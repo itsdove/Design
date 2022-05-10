@@ -1,7 +1,11 @@
 package com.example.design.Controller;
+import com.example.design.Dao.Part1nMapper;
 import com.example.design.Dao.Part2unMapper;
+import com.example.design.Dao.Part3nMapper;
+import com.example.design.bean.Part1n;
 import com.example.design.bean.Part2un;
 import com.example.design.bean.Part2unExample;
+import com.example.design.bean.Part3n;
 import org.apache.coyote.Response;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,13 @@ import java.util.List;
 
 @Controller
 public class controller {
+    @Autowired
+    Part2unMapper part2unMapper ;
+    @Autowired
+    Part1nMapper part1nMapper;
+    @Autowired
+    Part3nMapper part3nMapper;
+
    @RequestMapping(value = "/getdig",params = "id")
    @CrossOrigin(origins = "*",maxAge = 3600)
     public  @ResponseBody Object[] getid(@Param("id")String id) {
@@ -30,23 +41,5 @@ public class controller {
         return part2uns.toArray();
     }
 
-    @Autowired
-    Part2unMapper part2unMapper ;
-    public @ResponseBody String get() {
-        try {
-            DataInputStream in = new DataInputStream(new FileInputStream("C:\\Users\\lianx\\Desktop\\documents-export-2022-04-24\\附件3-Data\\第二部分正常（2019.5.1-5.3）.csv"));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in,"UTF-16"));// 文件名
-            reader.readLine();//第一行信息，为标题信息，不用,如果需要，注释掉
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                String item[] = line.split("\t");// CSV格式文件为逗号分隔符文件，这里根据逗号切分
-                Part2un part2un=new Part2un(item[0],item[1],item[2],item[3],item[4],item[5],item[6],item[7],item[8],item[9],item[10],item[11],item[12],item[13]);
-                part2unMapper.insert(part2un);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return  "a";
 
-    }
 }

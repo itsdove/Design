@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.design.Dao.Part3nMapper" >
+  <resultMap id="BaseResultMap" type="com.example.design.bean.Part3n" >
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="U3CGR001MP_AVALUE" property="u3cgr001mpAvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR003MP_AVALUE" property="u3cgr003mpAvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR001MD_AVALUE" property="u3cgr001mdAvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR059MN_AVALUE" property="u3cgr059mnAvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR059SN_LVALUE" property="u3cgr059snLvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR039SP_LVALUE" property="u3cgr039spLvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR055SP_LVALUE" property="u3cgr055spLvalue" jdbcType="VARCHAR" />
+    <result column="U3CGR045ST_LVALUE" property="u3cgr045stLvalue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    date, U3CGR001MP_AVALUE, U3CGR003MP_AVALUE, U3CGR001MD_AVALUE, U3CGR059MN_AVALUE, 
+    U3CGR059SN_LVALUE, U3CGR039SP_LVALUE, U3CGR055SP_LVALUE, U3CGR045ST_LVALUE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.design.bean.Part3nExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from part3n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.example.design.bean.Part3nExample" >
+    delete from part3n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.design.bean.Part3n" >
+    insert into part3n (date, U3CGR001MP_AVALUE, U3CGR003MP_AVALUE, 
+      U3CGR001MD_AVALUE, U3CGR059MN_AVALUE, U3CGR059SN_LVALUE, 
+      U3CGR039SP_LVALUE, U3CGR055SP_LVALUE, U3CGR045ST_LVALUE
+      )
+    values (#{date,jdbcType=VARCHAR}, #{u3cgr001mpAvalue,jdbcType=VARCHAR}, #{u3cgr003mpAvalue,jdbcType=VARCHAR}, 
+      #{u3cgr001mdAvalue,jdbcType=VARCHAR}, #{u3cgr059mnAvalue,jdbcType=VARCHAR}, #{u3cgr059snLvalue,jdbcType=VARCHAR}, 
+      #{u3cgr039spLvalue,jdbcType=VARCHAR}, #{u3cgr055spLvalue,jdbcType=VARCHAR}, #{u3cgr045stLvalue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.design.bean.Part3n" >
+    insert into part3n
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="u3cgr001mpAvalue != null" >
+        U3CGR001MP_AVALUE,
+      </if>
+      <if test="u3cgr003mpAvalue != null" >
+        U3CGR003MP_AVALUE,
+      </if>
+      <if test="u3cgr001mdAvalue != null" >
+        U3CGR001MD_AVALUE,
+      </if>
+      <if test="u3cgr059mnAvalue != null" >
+        U3CGR059MN_AVALUE,
+      </if>
+      <if test="u3cgr059snLvalue != null" >
+        U3CGR059SN_LVALUE,
+      </if>
+      <if test="u3cgr039spLvalue != null" >
+        U3CGR039SP_LVALUE,
+      </if>
+      <if test="u3cgr055spLvalue != null" >
+        U3CGR055SP_LVALUE,
+      </if>
+      <if test="u3cgr045stLvalue != null" >
+        U3CGR045ST_LVALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr001mpAvalue != null" >
+        #{u3cgr001mpAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr003mpAvalue != null" >
+        #{u3cgr003mpAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr001mdAvalue != null" >
+        #{u3cgr001mdAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr059mnAvalue != null" >
+        #{u3cgr059mnAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr059snLvalue != null" >
+        #{u3cgr059snLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr039spLvalue != null" >
+        #{u3cgr039spLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr055spLvalue != null" >
+        #{u3cgr055spLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3cgr045stLvalue != null" >
+        #{u3cgr045stLvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.design.bean.Part3nExample" resultType="java.lang.Integer" >
+    select count(*) from part3n
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update part3n
+    <set >
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr001mpAvalue != null" >
+        U3CGR001MP_AVALUE = #{record.u3cgr001mpAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr003mpAvalue != null" >
+        U3CGR003MP_AVALUE = #{record.u3cgr003mpAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr001mdAvalue != null" >
+        U3CGR001MD_AVALUE = #{record.u3cgr001mdAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr059mnAvalue != null" >
+        U3CGR059MN_AVALUE = #{record.u3cgr059mnAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr059snLvalue != null" >
+        U3CGR059SN_LVALUE = #{record.u3cgr059snLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr039spLvalue != null" >
+        U3CGR039SP_LVALUE = #{record.u3cgr039spLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr055spLvalue != null" >
+        U3CGR055SP_LVALUE = #{record.u3cgr055spLvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3cgr045stLvalue != null" >
+        U3CGR045ST_LVALUE = #{record.u3cgr045stLvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update part3n
+    set date = #{record.date,jdbcType=VARCHAR},
+      U3CGR001MP_AVALUE = #{record.u3cgr001mpAvalue,jdbcType=VARCHAR},
+      U3CGR003MP_AVALUE = #{record.u3cgr003mpAvalue,jdbcType=VARCHAR},
+      U3CGR001MD_AVALUE = #{record.u3cgr001mdAvalue,jdbcType=VARCHAR},
+      U3CGR059MN_AVALUE = #{record.u3cgr059mnAvalue,jdbcType=VARCHAR},
+      U3CGR059SN_LVALUE = #{record.u3cgr059snLvalue,jdbcType=VARCHAR},
+      U3CGR039SP_LVALUE = #{record.u3cgr039spLvalue,jdbcType=VARCHAR},
+      U3CGR055SP_LVALUE = #{record.u3cgr055spLvalue,jdbcType=VARCHAR},
+      U3CGR045ST_LVALUE = #{record.u3cgr045stLvalue,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

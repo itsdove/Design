@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 public interface Part2unMapper {
     int countByExample(Part2unExample example);
 
-
     int insert(Part2un record);
 
     int insertSelective(Part2un record);
@@ -20,6 +19,7 @@ public interface Part2unMapper {
     List<Part2un> selectByExample(Part2unExample example);
 
     List<String> get(@Param("id") String id);
+
     List<String> getdate();
 
 
