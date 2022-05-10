@@ -7,6 +7,23 @@ public class Part2un {
 
     private String u3crf109mvAvalue;
 
+    public Part2un(String date, String u3crf107mvAvalue, String u3crf109mvAvalue, String u3crf115mtAvalue, String u3crf117mtAvalue, String u3crf125mtAvalue, String u3crf145mt1Avalue, String u3crf145mt2Avalue, String u3crf147mt1Avalue, String u3crf147mt2Avalue, String u3crf151mtAvalue, String u3crf153mtAvalue, String u3crf101sn1Lvalue, String u3crf109sdLvalue) {
+        this.date = date;
+        this.u3crf107mvAvalue = u3crf107mvAvalue;
+        this.u3crf109mvAvalue = u3crf109mvAvalue;
+        this.u3crf115mtAvalue = u3crf115mtAvalue;
+        this.u3crf117mtAvalue = u3crf117mtAvalue;
+        this.u3crf125mtAvalue = u3crf125mtAvalue;
+        this.u3crf145mt1Avalue = u3crf145mt1Avalue;
+        this.u3crf145mt2Avalue = u3crf145mt2Avalue;
+        this.u3crf147mt1Avalue = u3crf147mt1Avalue;
+        this.u3crf147mt2Avalue = u3crf147mt2Avalue;
+        this.u3crf151mtAvalue = u3crf151mtAvalue;
+        this.u3crf153mtAvalue = u3crf153mtAvalue;
+        this.u3crf101sn1Lvalue = u3crf101sn1Lvalue;
+        this.u3crf109sdLvalue = u3crf109sdLvalue;
+    }
+
     private String u3crf115mtAvalue;
 
     private String u3crf117mtAvalue;
