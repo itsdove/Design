@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.design.Dao.Part2unMapper" >
+  <resultMap id="BaseResultMap" type="com.example.design.bean.Part2un" >
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="U3CRF107MV_AVALUE" property="u3crf107mvAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF109MV_AVALUE" property="u3crf109mvAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF115MT_AVALUE" property="u3crf115mtAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF117MT_AVALUE" property="u3crf117mtAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF125MT_AVALUE" property="u3crf125mtAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF145MT_1_AVALUE" property="u3crf145mt1Avalue" jdbcType="VARCHAR" />
+    <result column="U3CRF145MT_2_AVALUE" property="u3crf145mt2Avalue" jdbcType="VARCHAR" />
+    <result column="U3CRF147MT_1_AVALUE" property="u3crf147mt1Avalue" jdbcType="VARCHAR" />
+    <result column="U3CRF147MT_2_AVALUE" property="u3crf147mt2Avalue" jdbcType="VARCHAR" />
+    <result column="U3CRF151MT_AVALUE" property="u3crf151mtAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF153MT_AVALUE" property="u3crf153mtAvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF101SN1_LVALUE" property="u3crf101sn1Lvalue" jdbcType="VARCHAR" />
+    <result column="U3CRF109SD_LVALUE" property="u3crf109sdLvalue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    date, U3CRF107MV_AVALUE, U3CRF109MV_AVALUE, U3CRF115MT_AVALUE, U3CRF117MT_AVALUE, 
+    U3CRF125MT_AVALUE, U3CRF145MT_1_AVALUE, U3CRF145MT_2_AVALUE, U3CRF147MT_1_AVALUE, 
+    U3CRF147MT_2_AVALUE, U3CRF151MT_AVALUE, U3CRF153MT_AVALUE, U3CRF101SN1_LVALUE, U3CRF109SD_LVALUE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.design.bean.Part2unExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from part2un
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.example.design.bean.Part2unExample" >
+    delete from part2un
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.design.bean.Part2un" >
+    insert into part2un (date, U3CRF107MV_AVALUE, U3CRF109MV_AVALUE, 
+      U3CRF115MT_AVALUE, U3CRF117MT_AVALUE, U3CRF125MT_AVALUE, 
+      U3CRF145MT_1_AVALUE, U3CRF145MT_2_AVALUE, U3CRF147MT_1_AVALUE, 
+      U3CRF147MT_2_AVALUE, U3CRF151MT_AVALUE, U3CRF153MT_AVALUE, 
+      U3CRF101SN1_LVALUE, U3CRF109SD_LVALUE)
+    values (#{date,jdbcType=VARCHAR}, #{u3crf107mvAvalue,jdbcType=VARCHAR}, #{u3crf109mvAvalue,jdbcType=VARCHAR}, 
+      #{u3crf115mtAvalue,jdbcType=VARCHAR}, #{u3crf117mtAvalue,jdbcType=VARCHAR}, #{u3crf125mtAvalue,jdbcType=VARCHAR}, 
+      #{u3crf145mt1Avalue,jdbcType=VARCHAR}, #{u3crf145mt2Avalue,jdbcType=VARCHAR}, #{u3crf147mt1Avalue,jdbcType=VARCHAR}, 
+      #{u3crf147mt2Avalue,jdbcType=VARCHAR}, #{u3crf151mtAvalue,jdbcType=VARCHAR}, #{u3crf153mtAvalue,jdbcType=VARCHAR}, 
+      #{u3crf101sn1Lvalue,jdbcType=VARCHAR}, #{u3crf109sdLvalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.design.bean.Part2un" >
+    insert into part2un
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="u3crf107mvAvalue != null" >
+        U3CRF107MV_AVALUE,
+      </if>
+      <if test="u3crf109mvAvalue != null" >
+        U3CRF109MV_AVALUE,
+      </if>
+      <if test="u3crf115mtAvalue != null" >
+        U3CRF115MT_AVALUE,
+      </if>
+      <if test="u3crf117mtAvalue != null" >
+        U3CRF117MT_AVALUE,
+      </if>
+      <if test="u3crf125mtAvalue != null" >
+        U3CRF125MT_AVALUE,
+      </if>
+      <if test="u3crf145mt1Avalue != null" >
+        U3CRF145MT_1_AVALUE,
+      </if>
+      <if test="u3crf145mt2Avalue != null" >
+        U3CRF145MT_2_AVALUE,
+      </if>
+      <if test="u3crf147mt1Avalue != null" >
+        U3CRF147MT_1_AVALUE,
+      </if>
+      <if test="u3crf147mt2Avalue != null" >
+        U3CRF147MT_2_AVALUE,
+      </if>
+      <if test="u3crf151mtAvalue != null" >
+        U3CRF151MT_AVALUE,
+      </if>
+      <if test="u3crf153mtAvalue != null" >
+        U3CRF153MT_AVALUE,
+      </if>
+      <if test="u3crf101sn1Lvalue != null" >
+        U3CRF101SN1_LVALUE,
+      </if>
+      <if test="u3crf109sdLvalue != null" >
+        U3CRF109SD_LVALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf107mvAvalue != null" >
+        #{u3crf107mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf109mvAvalue != null" >
+        #{u3crf109mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf115mtAvalue != null" >
+        #{u3crf115mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf117mtAvalue != null" >
+        #{u3crf117mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf125mtAvalue != null" >
+        #{u3crf125mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf145mt1Avalue != null" >
+        #{u3crf145mt1Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf145mt2Avalue != null" >
+        #{u3crf145mt2Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf147mt1Avalue != null" >
+        #{u3crf147mt1Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf147mt2Avalue != null" >
+        #{u3crf147mt2Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf151mtAvalue != null" >
+        #{u3crf151mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf153mtAvalue != null" >
+        #{u3crf153mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf101sn1Lvalue != null" >
+        #{u3crf101sn1Lvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="u3crf109sdLvalue != null" >
+        #{u3crf109sdLvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.design.bean.Part2unExample" resultType="java.lang.Integer" >
+    select count(*) from part2un
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update part2un
+    <set >
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf107mvAvalue != null" >
+        U3CRF107MV_AVALUE = #{record.u3crf107mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf109mvAvalue != null" >
+        U3CRF109MV_AVALUE = #{record.u3crf109mvAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf115mtAvalue != null" >
+        U3CRF115MT_AVALUE = #{record.u3crf115mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf117mtAvalue != null" >
+        U3CRF117MT_AVALUE = #{record.u3crf117mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf125mtAvalue != null" >
+        U3CRF125MT_AVALUE = #{record.u3crf125mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf145mt1Avalue != null" >
+        U3CRF145MT_1_AVALUE = #{record.u3crf145mt1Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf145mt2Avalue != null" >
+        U3CRF145MT_2_AVALUE = #{record.u3crf145mt2Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf147mt1Avalue != null" >
+        U3CRF147MT_1_AVALUE = #{record.u3crf147mt1Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf147mt2Avalue != null" >
+        U3CRF147MT_2_AVALUE = #{record.u3crf147mt2Avalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf151mtAvalue != null" >
+        U3CRF151MT_AVALUE = #{record.u3crf151mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf153mtAvalue != null" >
+        U3CRF153MT_AVALUE = #{record.u3crf153mtAvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf101sn1Lvalue != null" >
+        U3CRF101SN1_LVALUE = #{record.u3crf101sn1Lvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3crf109sdLvalue != null" >
+        U3CRF109SD_LVALUE = #{record.u3crf109sdLvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update part2un
+    set date = #{record.date,jdbcType=VARCHAR},
+      U3CRF107MV_AVALUE = #{record.u3crf107mvAvalue,jdbcType=VARCHAR},
+      U3CRF109MV_AVALUE = #{record.u3crf109mvAvalue,jdbcType=VARCHAR},
+      U3CRF115MT_AVALUE = #{record.u3crf115mtAvalue,jdbcType=VARCHAR},
+      U3CRF117MT_AVALUE = #{record.u3crf117mtAvalue,jdbcType=VARCHAR},
+      U3CRF125MT_AVALUE = #{record.u3crf125mtAvalue,jdbcType=VARCHAR},
+      U3CRF145MT_1_AVALUE = #{record.u3crf145mt1Avalue,jdbcType=VARCHAR},
+      U3CRF145MT_2_AVALUE = #{record.u3crf145mt2Avalue,jdbcType=VARCHAR},
+      U3CRF147MT_1_AVALUE = #{record.u3crf147mt1Avalue,jdbcType=VARCHAR},
+      U3CRF147MT_2_AVALUE = #{record.u3crf147mt2Avalue,jdbcType=VARCHAR},
+      U3CRF151MT_AVALUE = #{record.u3crf151mtAvalue,jdbcType=VARCHAR},
+      U3CRF153MT_AVALUE = #{record.u3crf153mtAvalue,jdbcType=VARCHAR},
+      U3CRF101SN1_LVALUE = #{record.u3crf101sn1Lvalue,jdbcType=VARCHAR},
+      U3CRF109SD_LVALUE = #{record.u3crf109sdLvalue,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
