@@ -88,12 +88,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.example.design.bean.Part3nExample" >
-    delete from part3n
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <insert id="insert" parameterType="com.example.design.bean.Part3n" >
     insert into part3n (date, U3CGR001MP_AVALUE, U3CGR003MP_AVALUE, 
       U3CGR001MD_AVALUE, U3CGR059MN_AVALUE, U3CGR059SN_LVALUE, 
@@ -171,54 +165,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update part3n
-    <set >
-      <if test="record.date != null" >
-        date = #{record.date,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr001mpAvalue != null" >
-        U3CGR001MP_AVALUE = #{record.u3cgr001mpAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr003mpAvalue != null" >
-        U3CGR003MP_AVALUE = #{record.u3cgr003mpAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr001mdAvalue != null" >
-        U3CGR001MD_AVALUE = #{record.u3cgr001mdAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr059mnAvalue != null" >
-        U3CGR059MN_AVALUE = #{record.u3cgr059mnAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr059snLvalue != null" >
-        U3CGR059SN_LVALUE = #{record.u3cgr059snLvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr039spLvalue != null" >
-        U3CGR039SP_LVALUE = #{record.u3cgr039spLvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr055spLvalue != null" >
-        U3CGR055SP_LVALUE = #{record.u3cgr055spLvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.u3cgr045stLvalue != null" >
-        U3CGR045ST_LVALUE = #{record.u3cgr045stLvalue,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update part3n
-    set date = #{record.date,jdbcType=VARCHAR},
-      U3CGR001MP_AVALUE = #{record.u3cgr001mpAvalue,jdbcType=VARCHAR},
-      U3CGR003MP_AVALUE = #{record.u3cgr003mpAvalue,jdbcType=VARCHAR},
-      U3CGR001MD_AVALUE = #{record.u3cgr001mdAvalue,jdbcType=VARCHAR},
-      U3CGR059MN_AVALUE = #{record.u3cgr059mnAvalue,jdbcType=VARCHAR},
-      U3CGR059SN_LVALUE = #{record.u3cgr059snLvalue,jdbcType=VARCHAR},
-      U3CGR039SP_LVALUE = #{record.u3cgr039spLvalue,jdbcType=VARCHAR},
-      U3CGR055SP_LVALUE = #{record.u3cgr055spLvalue,jdbcType=VARCHAR},
-      U3CGR045ST_LVALUE = #{record.u3cgr045stLvalue,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+  <select id="getdate" parameterType="java.lang.String"  resultType="java.lang.String">
+    select  date
+    from part3n
+  </select>
+  <select id="get" parameterType="java.lang.String"  resultType="java.lang.String">
+    select  ${id}
+    from part3n
+  </select>
 </mapper>

@@ -96,12 +96,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.example.design.bean.Part1nExample" >
-    delete from part1n
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <insert id="insert" parameterType="com.example.design.bean.Part1n" >
     insert into part1n (date, WCW101MV_AVALUE, WCW103MV_AVALUE, 
       WCW105MV_AVALUE, WCW111MT_AVALUE, WCWF121MT_AVALUE, 
@@ -225,82 +219,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update part1n
-    <set >
-      <if test="record.date != null" >
-        date = #{record.date,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw101mvAvalue != null" >
-        WCW101MV_AVALUE = #{record.wcw101mvAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw103mvAvalue != null" >
-        WCW103MV_AVALUE = #{record.wcw103mvAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw105mvAvalue != null" >
-        WCW105MV_AVALUE = #{record.wcw105mvAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw111mtAvalue != null" >
-        WCW111MT_AVALUE = #{record.wcw111mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcwf121mtAvalue != null" >
-        WCWF121MT_AVALUE = #{record.wcwf121mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw131mtAvalue != null" >
-        WCW131MT_AVALUE = #{record.wcw131mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw113mtAvalue != null" >
-        WCW113MT_AVALUE = #{record.wcw113mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw123mtAvalue != null" >
-        WCW123MT_AVALUE = #{record.wcw123mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw133mtAvalue != null" >
-        WCW133MT_AVALUE = #{record.wcw133mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw101mtAvalue != null" >
-        WCW101MT_AVALUE = #{record.wcw101mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw103mtAvalue != null" >
-        WCW103MT_AVALUE = #{record.wcw103mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw105mtAvalue != null" >
-        WCW105MT_AVALUE = #{record.wcw105mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw107mtAvalue != null" >
-        WCW107MT_AVALUE = #{record.wcw107mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw141mtAvalue != null" >
-        WCW141MT_AVALUE = #{record.wcw141mtAvalue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wcw143mtAvalue != null" >
-        WCW143MT_AVALUE = #{record.wcw143mtAvalue,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update part1n
-    set date = #{record.date,jdbcType=VARCHAR},
-      WCW101MV_AVALUE = #{record.wcw101mvAvalue,jdbcType=VARCHAR},
-      WCW103MV_AVALUE = #{record.wcw103mvAvalue,jdbcType=VARCHAR},
-      WCW105MV_AVALUE = #{record.wcw105mvAvalue,jdbcType=VARCHAR},
-      WCW111MT_AVALUE = #{record.wcw111mtAvalue,jdbcType=VARCHAR},
-      WCWF121MT_AVALUE = #{record.wcwf121mtAvalue,jdbcType=VARCHAR},
-      WCW131MT_AVALUE = #{record.wcw131mtAvalue,jdbcType=VARCHAR},
-      WCW113MT_AVALUE = #{record.wcw113mtAvalue,jdbcType=VARCHAR},
-      WCW123MT_AVALUE = #{record.wcw123mtAvalue,jdbcType=VARCHAR},
-      WCW133MT_AVALUE = #{record.wcw133mtAvalue,jdbcType=VARCHAR},
-      WCW101MT_AVALUE = #{record.wcw101mtAvalue,jdbcType=VARCHAR},
-      WCW103MT_AVALUE = #{record.wcw103mtAvalue,jdbcType=VARCHAR},
-      WCW105MT_AVALUE = #{record.wcw105mtAvalue,jdbcType=VARCHAR},
-      WCW107MT_AVALUE = #{record.wcw107mtAvalue,jdbcType=VARCHAR},
-      WCW141MT_AVALUE = #{record.wcw141mtAvalue,jdbcType=VARCHAR},
-      WCW143MT_AVALUE = #{record.wcw143mtAvalue,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+  <select id="getdate" parameterType="java.lang.String"  resultType="java.lang.String">
+    select  date
+    from part1n
+  </select>
+  <select id="get" parameterType="java.lang.String"  resultType="java.lang.String">
+    select  ${id}
+    from part1n
+  </select>
 </mapper>

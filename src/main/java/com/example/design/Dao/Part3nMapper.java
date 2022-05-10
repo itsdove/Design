@@ -10,15 +10,13 @@ import org.apache.ibatis.annotations.Param;
 public interface Part3nMapper {
     int countByExample(Part3nExample example);
 
-    int deleteByExample(Part3nExample example);
-
     int insert(Part3n record);
 
     int insertSelective(Part3n record);
 
     List<Part3n> selectByExample(Part3nExample example);
 
-    int updateByExampleSelective(@Param("record") Part3n record, @Param("example") Part3nExample example);
+    List<String> get(@Param("id") String id);
 
-    int updateByExample(@Param("record") Part3n record, @Param("example") Part3nExample example);
+    List<String> getdate();
 }
