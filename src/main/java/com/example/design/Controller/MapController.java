@@ -2,8 +2,8 @@ package com.example.design.Controller;
 
 import com.example.design.Dao.MapMapper;
 import com.example.design.bean.Map;
-import com.example.design.bean.MapExample;
-import org.apache.ibatis.annotations.Mapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +18,15 @@ public class MapController {
     @Autowired
     MapMapper mapMapper;
 
-    @RequestMapping(value = "/map",params = "group")
+    @RequestMapping(value = "/map")
     @CrossOrigin(origins = "*",maxAge = 3600)
-    public  @ResponseBody Object[] getid(@Param("group")int group) {
-        MapExample mapExample=new MapExample();
+    public  @ResponseBody
+    PageInfo getid(@Param("group")int group, @Param("pageNum")int pageNum, @Param("size")int size) {
+        PageHelper.startPage(pageNum, size);
         List<Map> maps = mapMapper.get(group);
-        return maps.toArray();
+        PageInfo pageInfo=new PageInfo(maps);
+        System.out.println(pageInfo);
+        return pageInfo;
     }
 
 }
