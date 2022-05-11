@@ -19,7 +19,7 @@ public class MapController {
     MapMapper mapMapper;
 
     @RequestMapping(value = "/map")
-    @CrossOrigin(origins = "*",maxAge = 3600)
+//    @CrossOrigin(origins = "*",maxAge = 3600)
     public  @ResponseBody
     PageInfo getid(@Param("group")int group, @Param("pageNum")int pageNum, @Param("size")int size) {
         PageHelper.startPage(pageNum, size);
