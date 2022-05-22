@@ -17,7 +17,7 @@ public class controller {
     Part1nMapper part1nMapper;
 
    @RequestMapping(value = "/getdig")
-   @CrossOrigin(origins = "*",maxAge = 3600)
+//   @CrossOrigin(origins = "*",maxAge = 3600)
     public  @ResponseBody Object[] getid(@RequestParam("id")String id,@RequestParam("part") String group) {
        List<String> part2uns;
        if(group.equals("1"))
@@ -29,7 +29,7 @@ public class controller {
     }
 
     @RequestMapping("/date")
-    @CrossOrigin(origins = "*",maxAge = 3600)
+//    @CrossOrigin(origins = "*",maxAge = 3600)
     public  @ResponseBody Object[] getdate() {
         List<String> part2uns = part2unMapper.getdate();
         return part2uns.toArray();
