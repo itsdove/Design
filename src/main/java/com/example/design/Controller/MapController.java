@@ -25,7 +25,6 @@ public class MapController {
         PageHelper.startPage(pageNum, size);
         List<Map> maps = mapMapper.get(group);
         PageInfo pageInfo=new PageInfo(maps);
-        System.out.println(pageInfo);
         return pageInfo;
     }
 
