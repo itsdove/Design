@@ -23,6 +23,8 @@ public class MapController {
     PageInfo getid(@Param("group")int group, @Param("pageNum")int pageNum, @Param("size")int size) {
         PageHelper.startPage(pageNum, size);
         List<Map> maps = mapMapper.get(group);
+        if(maps.size()==0)
+            return new PageInfo();
         PageInfo pageInfo=new PageInfo(maps);
         return pageInfo;
     }
